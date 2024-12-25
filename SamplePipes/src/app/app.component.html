@@ -1,0 +1,28 @@
+<div class="container">
+  <div>
+    <input name="filterText" 
+    type="text" 
+    [(ngModel)]="filterText" 
+    style="width: 400px; margin:10px 10px;padding: 2px; height: 30px;" 
+    ((keydown.enter))="onEnter()">
+
+  </div>
+  <div>
+    <table >
+      <th>Name</th>
+      <th>Course</th>
+      <th>Marks</th>
+      <th>Percentage</th>
+      <th>Gender</th>
+    </table>
+    <tr *ngFor="let item of students | filterStudent:filterText">
+      <td>{{item.name|tcase}}</td>
+      <td>{{item.course}}</td>
+      <td>{{item.marks}}</td>
+      <td>{{(item.marks) | percentage: totalmarks:2  }}</td>
+      <td>{{item.gender}}</td>
+    </tr>
+  </div>
+</div>
+
+
